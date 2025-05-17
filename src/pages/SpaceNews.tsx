@@ -7,7 +7,7 @@ import '../index.css'
 
 export const SpaceNews = () => {
   const { articles, fetchMore, loading, hasMore } = useFetchArticles('https://api.spaceflightnewsapi.net/v4/articles/?format=json&title_contains=space');  
-  const [savedSummaries, setSavedSummaries] = useLocalStorage<SavedSummary[]>('saved_summaries', []);
+  const [, setSavedSummaries] = useLocalStorage<SavedSummary[]>('saved_summaries', []);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

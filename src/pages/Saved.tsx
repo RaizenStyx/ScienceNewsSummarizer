@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SavedTable } from '../components/SavedTable';
 import type { SavedSummary } from '../types/savedSummary';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const Saved = () => {
   const [summaries, setSummaries] = useState<SavedSummary[]>([]);
