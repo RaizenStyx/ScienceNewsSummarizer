@@ -32,14 +32,14 @@ A modern, AI-powered web application built with **React + TypeScript** that fetc
 
 ## 📁 Project Structure
 
-src/
-├── components/ # Reusable UI components (ArticleCard, SavedTable, etc.)
-├── hooks/ # Custom hooks (news fetching, localStorage, etc.)
-├── pages/ # React Router pages (Home, Tech, Space, Playground, Saved)
-├── types/ # TypeScript types/interfaces
-├── utils/ # Utility functions (e.g., summarizeText)
-├── App.tsx # Root app with routes
-├── index.css # Global styles (dark tech theme)
+## src/
+### ├── components/ # Reusable UI components (ArticleCard, SavedTable, etc.)
+### ├── hooks/ # Custom hooks (news fetching, localStorage, etc.)
+### ├── pages/ # React Router pages (Home, Tech, Space, Playground, Saved)
+### ├── types/ # TypeScript types/interfaces
+### ├── utils/ # Utility functions (e.g., summarizeText)
+### ├── App.tsx # Root app with routes
+### ├── index.css # Global styles (dark tech theme)
 
 ---
 
@@ -52,34 +52,17 @@ src/
    cd science-news-summarizer
 Install dependencies:
 
-bash
-Copy
-Edit
+
 npm install
-Add Hugging Face API key:
+
+### Add Hugging Face API key:
 
 Create a .env file at the root and add:
 
-ini
-Copy
-Edit
 VITE_HUGGINGFACE_API_KEY=your_token_here
 You can get a free token at https://huggingface.co/settings/tokens
 
-Start the dev server:
-
-bash
-Copy
-Edit
-npm run dev
-Build for production:
-
-bash
-Copy
-Edit
-npm run build
-npm run preview
-📤 Deployment
+## 📤 Deployment
 Deploy this app for free using Vercel:
 
 Push to GitHub
@@ -90,7 +73,7 @@ Add your Hugging Face API key as an environment variable
 
 Done!
 
-🛠 Future Plans
+## 🛠 Future Plans
 🌐 Convert to Next.js for API routes and authentication
 
 📦 Add real-time database storage (Firebase, Supabase, or SQLite)
@@ -104,7 +87,7 @@ Done!
 📜 License
 This project is licensed under the MIT License.
 
-🙌 Acknowledgments
+## 🙌 Acknowledgments
 Hugging Face
 
 Spaceflight News API
