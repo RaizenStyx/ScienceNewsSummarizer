@@ -1,20 +1,21 @@
-import { useFetchArticles } from '../hooks/useFetchArticles';
+import { useFetchTech } from '../hooks/useFetchTech';
 import { ArticleCard } from '../components/ArticleCard';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useState } from 'react';
 import type { SavedSummary } from '../types/savedSummary';
 
-export const Home = () => {
-  const { articles, loading } = useFetchArticles();  
-  const [savedSummaries, setSavedSummaries] = useLocalStorage<SavedSummary[]>('saved_summaries', []);
+export const TechNews = () => {
+  const { articles, loading } = useFetchTech(); // modify hook to support topic if needed
+  const [savedSummaries, setSavedSummaries] = useState<SavedSummary[]>([]);
 
   const handleSave = (summary: SavedSummary) => {
-    setSavedSummaries(prev => [...prev, summary]);
-    localStorage.setItem('savedSummaries', JSON.stringify([...savedSummaries, summary]));
+    const updated = [...savedSummaries, summary];
+    setSavedSummaries(updated);
+    localStorage.setItem('savedSummaries', JSON.stringify(updated));
   };
 
   return (
     <main className="container">
-      <h1>Science News Summarizer</h1>
+      <h1>Technology News</h1>
       {loading ? <p>Loading...</p> : (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
           {articles.map(article => (

@@ -1,0 +1,60 @@
+import { useEffect, useState } from 'react';
+import { SavedTable } from '../components/SavedTable';
+import type { SavedSummary } from '../types/savedSummary';
+
+export const Saved = () => {
+  const [summaries, setSummaries] = useState<SavedSummary[]>([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('savedSummaries');
+    if (stored) {
+      setSummaries(JSON.parse(stored));
+    }
+  }, []);
+
+  const exportAsJSON = () => {
+    const blob = new Blob([JSON.stringify(summaries, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    downloadFile(url, 'summaries.json');
+  };
+
+  const exportAsCSV = () => {
+    const csv = [
+      ['Title', 'Summary', 'URL', 'Notes'],
+      ...summaries.map(s => [s.title, s.summary, s.url, s.notes])
+    ]
+      .map(row => row.map(field => `"${field.replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    downloadFile(url, 'summaries.csv');
+  };
+
+  const downloadFile = (url: string, filename: string) => {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <main className="container">
+      <h1>Saved Summaries</h1>
+
+      {summaries.length > 0 && (
+        <div className="export-buttons">
+          <button onClick={exportAsJSON}>Export as JSON</button>
+          <button onClick={exportAsCSV}>Export as CSV</button>
+        </div>
+      )}
+
+      {summaries.length === 0 ? (
+        <p>No summaries saved yet.</p>
+      ) : (
+        <SavedTable summaries={summaries} />
+      )}
+    </main>
+  );
+};
