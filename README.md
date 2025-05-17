@@ -1,54 +1,113 @@
-# React + TypeScript + Vite
+# 🧠 Science News Summarizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, AI-powered web application built with **React + TypeScript** that fetches the latest science, tech, and space news articles — and lets users summarize, annotate, and export them!
 
-Currently, two official plugins are available:
+> ✨ Designed with a sleek dark tech theme and deployable for free on [Vercel](https://vercel.com).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔍 **Live Science, Tech, and Space News** from the Spaceflight News API.
+- 🤖 **AI Summarization** using Hugging Face's Transformers API.
+- 📝 **Save Summaries** with custom titles, personal notes, and article links.
+- 📄 **Saved Summaries Table** with CSV or JSON export options.
+- 🌙 **Dark Techy UI** for a futuristic, sleek look.
+- 🌐 **Multi-page Navigation** using React Router.
+- ♻️ **Local Storage Persistence** – saved summaries are preserved across sessions.
+- 💨 *(Coming soon)* Infinite scroll and animated page transitions.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧰 Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend**: [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: Custom CSS with global dark theme
+- **Routing**: [React Router](https://reactrouter.com/)
+- **Animations** (upcoming): [Framer Motion](https://www.framer.com/motion/)
+- **AI Summarization**: [Hugging Face Inference API](https://huggingface.co/inference-api)
+- **News API**: [Spaceflight News API](https://api.spaceflightnewsapi.net/)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 📁 Project Structure
+
+src/
+├── components/ # Reusable UI components (ArticleCard, SavedTable, etc.)
+├── hooks/ # Custom hooks (news fetching, localStorage, etc.)
+├── pages/ # React Router pages (Home, Tech, Space, Playground, Saved)
+├── types/ # TypeScript types/interfaces
+├── utils/ # Utility functions (e.g., summarizeText)
+├── App.tsx # Root app with routes
+├── index.css # Global styles (dark tech theme)
+
+---
+
+## 🧪 Setup & Running Locally
+
+1. **Clone this repo**:
+
+   ```bash
+   git clone https://github.com/your-username/science-news-summarizer.git
+   cd science-news-summarizer
+Install dependencies:
+
+bash
+Copy
+Edit
+npm install
+Add Hugging Face API key:
+
+Create a .env file at the root and add:
+
+ini
+Copy
+Edit
+VITE_HUGGINGFACE_API_KEY=your_token_here
+You can get a free token at https://huggingface.co/settings/tokens
+
+Start the dev server:
+
+bash
+Copy
+Edit
+npm run dev
+Build for production:
+
+bash
+Copy
+Edit
+npm run build
+npm run preview
+📤 Deployment
+Deploy this app for free using Vercel:
+
+Push to GitHub
+
+Import the repo in Vercel
+
+Add your Hugging Face API key as an environment variable
+
+Done!
+
+🛠 Future Plans
+🌐 Convert to Next.js for API routes and authentication
+
+📦 Add real-time database storage (Firebase, Supabase, or SQLite)
+
+🎞️ Framer Motion transitions
+
+🔄 Infinite scroll pagination
+
+🔒 Optional user login to persist saved summaries
+
+📜 License
+This project is licensed under the MIT License.
+
+🙌 Acknowledgments
+Hugging Face
+
+Spaceflight News API
+
+React
+

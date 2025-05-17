@@ -6,33 +6,7 @@ interface Props {
 }
 
 export const SavedTable = ({ summaries }: Props) => {
-  const exportAsJSON = () => {
-    const blob = new Blob([JSON.stringify(summaries, null, 2)], {
-      type: 'application/json',
-    });
-    const url = URL.createObjectURL(blob);
-    downloadFile(url, 'summaries.json');
-  };
-
-  const exportAsCSV = () => {
-    const headers = ['Title', 'Summary', 'URL', 'Notes'];
-    const rows = summaries.map(s =>
-      [s.title, s.summary, s.url, s.notes].map(cell => `"${cell.replace(/"/g, '""')}"`).join(',')
-    );
-    const csvContent = [headers.join(','), ...rows].join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    downloadFile(url, 'summaries.csv');
-  };
-
-  const downloadFile = (url: string, filename: string) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
+ 
   return (
     <div style={{ marginTop: '2rem' }}>
     
