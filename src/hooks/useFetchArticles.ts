@@ -1,34 +1,43 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import type { Article } from '../types/article';
 
-export const useFetchArticles = () => {
+const PAGE_SIZE = 12;
+
+export const useFetchArticles = (endpoint: string) => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const res = await fetch('https://api.spaceflightnewsapi.net/v4/articles');
-        const data = await res.json();
-        const formatted = data.results.map((item: any) => ({
-          id: item.id.toString(),
-          title: item.title,
-          summary: item.summary,
-          publishedAt: item.publishedAt,
-          url: item.url,
-          imageUrl: item.imageUrl,
-          source: 'Spaceflight News',
-        }));
-        setArticles(formatted);
-      } catch (err) {
-        console.error('Failed to fetch articles:', err);
-      } finally {
-        setLoading(false);
+
+  const fetchMore = async () => {
+
+    if (loading || !hasMore) return;
+    setLoading(true);
+
+    const offset = page * PAGE_SIZE;
+    const url = `${endpoint}&limit=${PAGE_SIZE}&offset=${offset}`;
+    console.log('Fetching from:', url);
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (!data.results || !Array.isArray(data.results)) {
+        setHasMore(false);
+        return;
       }
-    };
 
-    fetchArticles();
-  }, []);
+      if (data.results.length < PAGE_SIZE) setHasMore(false);
 
-  return { articles, loading };
+      setArticles(prev => [...prev, ...data.results]);
+      setPage(prev => prev + 1);
+    } catch (err) {
+      console.error('Error fetching articles:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { articles, fetchMore, loading, hasMore };
 };

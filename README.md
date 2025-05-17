@@ -15,7 +15,7 @@ A modern, AI-powered web application built with **React + TypeScript** that fetc
 - 🌙 **Dark Techy UI** for a futuristic, sleek look.
 - 🌐 **Multi-page Navigation** using React Router.
 - ♻️ **Local Storage Persistence** – saved summaries are preserved across sessions.
-- 💨 *(Coming soon)* Infinite scroll and animated page transitions.
+- 💨 **Infinite scroll and animated page transitions** using an observer and framer motion respectively.
 
 ---
 
@@ -59,7 +59,7 @@ npm install
 
 Create a .env file at the root and add:
 
-VITE_HUGGINGFACE_API_KEY=your_token_here
+### VITE_HUGGINGFACE_API_KEY=your_token_here
 You can get a free token at https://huggingface.co/settings/tokens
 
 ## 📤 Deployment

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SavedTable } from '../components/SavedTable';
 import type { SavedSummary } from '../types/savedSummary';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Saved = () => {
   const [summaries, setSummaries] = useState<SavedSummary[]>([]);
@@ -40,6 +41,12 @@ export const Saved = () => {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3 }}
+    >
     <main className="container">
       <h1>Saved Summaries</h1>
 
@@ -56,5 +63,6 @@ export const Saved = () => {
         <SavedTable summaries={summaries} />
       )}
     </main>
+    </motion.div>
   );
 };
