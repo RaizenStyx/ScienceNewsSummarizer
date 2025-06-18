@@ -40,9 +40,8 @@ export const Saved = () => {
     URL.revokeObjectURL(url);
   };
   const clearAll = () => {
-    () => setSummaries([]);
+    setSummaries([]);
     localStorage.removeItem('saved_summaries');
-    //window.location.reload();
   };
 
   return (
