@@ -42,7 +42,7 @@ export const Saved = () => {
   const clearAll = () => {
     () => setSummaries([]);
     localStorage.removeItem('saved_summaries');
-    window.location.reload();
+    //window.location.reload();
   };
 
   return (
