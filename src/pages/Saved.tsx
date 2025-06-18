@@ -7,7 +7,7 @@ export const Saved = () => {
   const [summaries, setSummaries] = useState<SavedSummary[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem('savedSummaries');
+    const stored = localStorage.getItem('saved_summaries');
     if (stored) {
       setSummaries(JSON.parse(stored));
     }
