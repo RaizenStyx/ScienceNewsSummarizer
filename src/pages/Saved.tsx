@@ -39,6 +39,11 @@ export const Saved = () => {
     a.click();
     URL.revokeObjectURL(url);
   };
+  const clearAll = () => {
+    () => setSummaries([]);
+    localStorage.removeItem('saved_summaries');
+    window.location.reload();
+  };
 
   return (
     <motion.div
@@ -54,6 +59,7 @@ export const Saved = () => {
         <div className="export-buttons">
           <button onClick={exportAsJSON}>Export as JSON</button>
           <button onClick={exportAsCSV}>Export as CSV</button>
+          <button style={{background: "red"}} onClick={clearAll}>Clear All</button>
         </div>
       )}
 
